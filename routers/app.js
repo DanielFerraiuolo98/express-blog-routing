@@ -3,7 +3,7 @@ const router = express.Router();
 
 const post = require("../data/post.js");
 
-router.get("/posts", function (req, res) {
+router.get("/", function (req, res) {
     const postName = req.query.name;
     console.log(postName);
     let response = {
@@ -14,7 +14,7 @@ router.get("/posts", function (req, res) {
 });
 
 //show
-router.get("/posts/:id", (req, res) => {
+router.get("/:id", (req, res) => {
     const id = parseInt(req.params.id);
     const item = post.find((posts) => posts.id === id);
     if (item) {
@@ -34,22 +34,22 @@ router.get("/posts/:id", (req, res) => {
 });
 
 //creare una nuova risorsa => post
-router.post("/posts", (req, res) => {
+router.post("/", (req, res) => {
     res.send("creazione nuovo post");
 });
 
 //cambiare tutta la risorsa => update
-router.put("/posts/:id", (req, res) => {
+router.put("/:id", (req, res) => {
     res.send("modifica integrale di un post");
 });
 
 //cambiare parzialmente una risorsa => modify
-router.patch("/posts/:id", (req, res) => {
+router.patch("/:id", (req, res) => {
     res.send("modifica parziale di un post");
 });
 
 //cancellazione di una risorsa => destroy
-router.delete("/posts/:id", (req, res) => {
+router.delete("/:id", (req, res) => {
     res.send("cancellazione di un post");
 });
 
